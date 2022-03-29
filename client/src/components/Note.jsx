@@ -15,7 +15,7 @@ function Note(props) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...newEnote,id:EditId }),
     };
-    fetch("http://localhost:4000/editnote", requestOptions)
+    fetch("/editnote", requestOptions)
     .then((res) =>res.json())
     .then((jsondata) => {
       setEditedNote((prev)=>{

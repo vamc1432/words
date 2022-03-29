@@ -7,7 +7,7 @@ import CreateArea from "./components/CreateArea";
 function App() {
   var [notes, setnotes] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4000/getall")
+    fetch("/getall")
       .then((res) => res.json())
       .then((jsondata) => setnotes(jsondata))
       .catch((error) => {
@@ -20,7 +20,7 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newNote),
     };
-    fetch("http://localhost:4000/addnote", requestOptions)
+    fetch("/addnote", requestOptions)
       .then((res) => res.json())
       .then((jsondata) => setnotes(jsondata));
   }
@@ -30,7 +30,7 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
     };
-    fetch("http://localhost:4000/deletenote", requestOptions)
+    fetch("/deletenote", requestOptions)
       .then((res) => res.json())
       .then((jsondata) => setnotes(jsondata));
   }
